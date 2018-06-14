@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ui',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -118,3 +120,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'app/media')
+LOGIN_REDIRECT_URL = '/ui/'
+LOGIN_URL = '/ui/login'
+LOGIN_EXEMPT_URLS = (
+    r'^ui/logout/$',
+    r'^ui/register/$',
+    r'^ui/reset_password/$',
+    r'^ui/reset_password$',
+    r'^ui/reset_password/done/$',
+    r'^ui/reset_password/done$',
+    r'^ui/reset_password/confirm/',
+    r'^ui/reset_password/confirm',
+    r'^ui/reset_password/complete/$',
+    r'^ui/reset_password/complete$',
+)
+
+# on an another terminal, run
+# python -m smtpd -n -c DebuggingServer localhost:1025
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025

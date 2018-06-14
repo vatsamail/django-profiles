@@ -1,0 +1,27 @@
+{%extends 'base.html' %}
+
+{%block title%}
+Home-Profile
+{%endblock%}
+
+{%block body%}
+<div class="container">
+  <h1>Profile</h1>
+</div>
+<div class="container">
+  <p>
+    Logged in user: {{user}} [{{user.first_name}} {{user.last_name}}]
+    <br>
+    Email ID: {{user.email}}
+    <br>
+    User profile: {{user.userprofile}}
+    <br>
+    Nick Name: {{user.userprofile.nick_name}}
+  </p>
+  {% if user.userprofile.image %}
+  <p>
+    <img src="{{user.userprofile.image.url}}"  width="240">
+  </p>
+  {%endif%}
+</div>
+{%endblock%}
