@@ -7,4 +7,13 @@ Core-Home
 <div class="container">
 <h2>Core-Home</h2>
 </div>
+
+<div class="container">
+  <form method="post">
+    {%csrf_token%}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <p>Text: {{text}}</p>
+  </form>
+</div>
 {%endblock%}
