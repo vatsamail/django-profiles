@@ -22,6 +22,7 @@ from app import views
 urlpatterns = [
     path('', views.login_redirect, name='login-redirect'),
     path('ui/', include('ui.urls', namespace='ui')),
+    path('home/', include('core.urls', namespace='core')),
     path('account/', include('ui.urls', namespace='account')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
