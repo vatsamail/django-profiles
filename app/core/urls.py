@@ -12,4 +12,5 @@ from django.contrib.auth.views import (
 app_name = 'core'
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
+    re_path(r'friending/(?P<operation>.+)/(?P<pk>\d+)/$', views.friending, name='friend_unfriend'),
 ]

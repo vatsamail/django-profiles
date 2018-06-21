@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ui',
     'core',
+    'crispy_forms',
     #'shell_plus',
 ]
 
@@ -143,3 +144,4 @@ LOGIN_EXEMPT_URLS = (
 # python -m smtpd -n -c DebuggingServer localhost:1025
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

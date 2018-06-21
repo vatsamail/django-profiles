@@ -17,6 +17,7 @@ urlpatterns = [
     path('logout/', logout, {'template_name': 'ui/logout.html'}, name='logout'),
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
+    path('profile/<int:pk>/', views.profile, name='profile_with_pk'),
     path('profile/edit', views.profile_edit, name='profile-edit'),
     path('change_password', views.change_password, name='change-password'),
 

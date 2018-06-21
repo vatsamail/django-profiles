@@ -36,10 +36,15 @@ def register(request):
         return render(request, 'ui/reg_form.html', args)
 
 #@login_required
-def profile(request):
-    args = {'user': request.user}
-    print("User:", request.user.userprofile.nick_name)
+def profile(request, pk=None):
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+    args = {'user': user}
+    print("User:", user.userprofile.nick_name)
     return render(request, 'ui/profile.html', args)
+
 
 #@login_required
 def profile_edit(request):

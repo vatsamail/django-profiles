@@ -1,19 +1,56 @@
 {%extends 'base.html'%}
+{%load crispy_forms_tags %}
 {%block title%}
 Core-Home
 {%endblock%}
 
 {%block body%}
 <div class="container">
-<h2>Core-Home</h2>
+  <div class="row">
+  <div class="col-md-6">
+    <h2>My Stuff</h2>
+    <form method="post">
+      {%csrf_token%}
+      <!-- {{ form.as_p}} -->
+      <!-- {{ form.errors}}
+      {{form.post}} -->
+      {{form|crispy}}
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <p>Text Entered: {{text}}</p>
+    </form>
+    <h3>Posts</h3>
+    {%for post in posts %}
+    <ul>
+      <li><h2>{{post.post}}</h2><br>Posted on {{post.created}} by {{post.user.userprofile.first_name}} {{post.user.userprofile.last_name}}</li>
+    </ul>
+    {%endfor%}
+  </div>
+  <div class="col-md-3">
+    <h2>Other Folks</h2>
+    {% for user in users%}
+    <a href="{% url 'ui:profile_with_pk' pk=user.pk %}">
+    <h3>{{user.username}}</h3>
+    </a>
+    {%if user not in friends %}
+    <a href="{%url 'core:friend_unfriend' operation='add' pk=user.pk%}">
+    <button type="submit" class="btn btn-success">Friend</button>
+    </a>
+    {%endif%}
+    <br>
+    {%endfor%}
+  </div>
+  <div class="col-md-3">
+    <h2>Friends</h2>
+    {%for friend in friends%}
+    <a href="{%url 'core:friend_unfriend' operation='remove' pk=friend.pk%}">
+    <h3>{{friend.username}}</h3>
+    </a>
+    <a href="http://google.com">
+    <button type="submit" class="btn btn-warning">Unfriend</button>
+    </a>
+    <br>
+    {%endfor%}
+  </div>
 </div>
-
-<div class="container">
-  <form method="post">
-    {%csrf_token%}
-    {{ form.as_p}}
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <p>Text: {{text}}</p>
-  </form>
 </div>
 {%endblock%}

@@ -58,8 +58,7 @@ class UserProfile(models.Model):
     nick_name      = models.CharField(default="NickName", max_length=200, blank=True, null=True)
     email          = models.EmailField()
     image          = models.ImageField(upload_to='profile_image', blank=True, null=True)
-
-    admin          = UserProfileManager()     
+    admin          = UserProfileManager()
 
     def __str__(self):
         return self.user.username
@@ -67,7 +66,7 @@ class UserProfile(models.Model):
 def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = UserProfile.objects.create(user=kwargs['instance'])
-post_save.connect(create_profile, sender=User)
+    post_save.connect(create_profile, sender=User)
 ####################################################
 
 class Person(Base):
