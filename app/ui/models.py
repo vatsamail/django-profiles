@@ -51,6 +51,7 @@ class UserProfileManager(models.Manager):
         return super(UserProfileManager, self).get_queryset().filter(user='admin')
 
 
+
 class UserProfile(models.Model):
     user           = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name     = models.CharField(default="FirstName", max_length=200)
@@ -58,7 +59,7 @@ class UserProfile(models.Model):
     nick_name      = models.CharField(default="NickName", max_length=200, blank=True, null=True)
     email          = models.EmailField()
     image          = models.ImageField(upload_to='profile_image', blank=True, null=True)
-    admin          = UserProfileManager()
+    #admin          = UserProfileManager()
 
     def __str__(self):
         return self.user.username

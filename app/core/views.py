@@ -34,7 +34,8 @@ class HomeView(TemplateView):
 
 
 def friending(request, operation, pk):
-    new_friend = Friend.objects.get(pk=pk)
+    print ("Operation", operation, pk)
+    new_friend = User.objects.get(pk=pk)
     if operation == 'add':
         Friend.make_friend(request.user, new_friend)
 

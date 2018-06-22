@@ -7,6 +7,9 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.post
+
 class Friend(models.Model):
     users = models.ManyToManyField(User, related_name='friends')
     me = models.ForeignKey(User, unique=False, on_delete=models.CASCADE, related_name='owner')
@@ -26,3 +29,6 @@ class Friend(models.Model):
         )
         friend.users.remove(new_friend)
         friend.save()
+
+    def __str__(self):
+        return self.me
