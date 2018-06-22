@@ -27,5 +27,11 @@ We will be using the following:
 * Any Friend on the friend list can be unfriended.
 
 
+## Frontend development
+#### If you want to play with the front end of the app, you should look into -
+* ui/templates/base.html - The changes you make in this html will reflect in every page
+* ui/templates/ui/*.html - Contains individual pages and few even containing forms ... changes here are specific to that page or that specific operation
+* core/templates/core/home.html - a very very minimal facebook-like home page. 
+
 ### contact:
-vatsamail@gmail.com 
+vatsamail@gmail.com
