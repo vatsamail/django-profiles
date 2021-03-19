@@ -10,7 +10,7 @@ django-reversion==2.0.13
 django-shell-plus==1.1.7
 django-taggit==0.22.2
 django-treebeard==4.3
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 draftjs-exporter==2.1.2
 html5lib==1.0.1
 idna==2.7
